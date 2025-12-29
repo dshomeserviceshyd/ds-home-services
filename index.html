@@ -247,8 +247,22 @@ function sendWhatsApp(){
   var url="https://wa.me/919700139827?text="+msg;
   window.open(url,'_blank');
 }
+  function getLocation(){
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(function(pos){
+      var lat=pos.coords.latitude;
+      var lon=pos.coords.longitude;
+      var mapLink="https://maps.google.com/?q="+lat+","+lon;
+      document.getElementById('location').value=mapLink;
+      alert('Location captured successfully');
+    },function(){alert('Location permission denied');});
+  }else{
+    alert('Geolocation not supported');
+  }
+}
 </script>
 </body>
 </html>
+
 
 
