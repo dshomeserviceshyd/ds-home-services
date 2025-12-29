@@ -206,10 +206,10 @@
       <option>Boduppal</option>
       <option>Malkajgiri</option>
       <option>Dilsukhnagar</option>
-      <option>Ramanthapur</option>
-      <option>DD Colony</option>
     </select>
     <textarea placeholder="Problem Description"></textarea>
+    <button type="button" onclick="getLocation()" style="background:#0f4c81;margin-bottom:10px;">Share My Location</button>
+    <input type="hidden" id="location" />
     <button onclick="sendWhatsApp()">Send via WhatsApp</button>
   </div>
 </section>
@@ -226,6 +226,7 @@
 
 <script>
 function sendWhatsApp(){
+  var location=document.getElementById('location').value;
   var name=document.querySelector('input[placeholder="Your Name"]').value;
   var mobile=document.querySelector('input[placeholder="Mobile Number"]').value;
   var service=document.querySelector('select').value;
@@ -242,12 +243,12 @@ function sendWhatsApp(){
           "Mobile: "+mobile+"%0A"+
           "Service: "+service+"%0A"+
           "Area: "+area+"%0A"+
-          "Problem: "+problem;
+          "Problem: "+problem+"%0A"+"Location: "+location;
 
   var url="https://wa.me/919700139827?text="+msg;
   window.open(url,'_blank');
 }
-  function getLocation(){
+function getLocation(){
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition(function(pos){
       var lat=pos.coords.latitude;
@@ -263,6 +264,3 @@ function sendWhatsApp(){
 </script>
 </body>
 </html>
-
-
-
